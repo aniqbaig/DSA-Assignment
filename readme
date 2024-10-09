@@ -1,0 +1,64 @@
+Project Overview:
+This project includes two separate programs that demonstrate key concepts in algorithm design and data structure management in C++. The first program performs prime number calculation using a linked list to store a large 1024-bit number, and the second implements a CPU process scheduling algorithm using a circular linked list.
+
+1. Prime Number Calculation Using Linked List (1024-bit Number)
+Approach:
+Problem: The goal is to store a 1024-bit random number across multiple nodes of a linked list, each node holding up to 64-bits. We then apply a Fermat Primality Test to check if the number is prime.
+Linked List: The 1024-bit number is split into 16 nodes, each storing a 64-bit chunk. The linked list stores these chunks sequentially to represent the large number.
+Random Number Generation: A random 1024-bit number is generated and split into chunks of 64-bits.
+Primality Test: A probabilistic Fermat primality test is used, which is applied across the entire 1024-bit number.
+Key Assumptions:
+The large number is split across 16 nodes of the linked list, each storing 64-bits.
+Fermat Primality Test is applied to the number, which may give false positives.
+No external libraries for big number arithmetic are used; everything is handled within the constraints of 64-bit unsigned integers.
+Challenges Faced:
+Handling Large Numbers: Managing large integers without external libraries, like GMP, required creative chunking of the number.
+Memory Management: Manual management of memory in C++ to handle large numbers efficiently across nodes.
+Primality Testing: Implementing an efficient primality test that can work with numbers split across multiple nodes.
+2. CPU Process Scheduling Algorithm Using Linked List
+Approach:
+Problem: The program simulates CPU process scheduling using a Circular Linked List. Each process has attributes such as process_id, execution_time, and remaining_time. The scheduler assigns fixed CPU time to each process in a cyclic manner until all processes are completed.
+Circular Linked List: Processes are stored as nodes in a circular linked list, and the algorithm goes through each process in the list, assigns CPU time, and updates their remaining time.
+Process Completion: Once a process's remaining time reaches zero, it is removed from the linked list.
+CPU Time Assignment: Each process gets a fixed amount of CPU time (as specified by the user) in each cycle, reducing its remaining time after every cycle.
+Key Features:
+Process Attributes: Each process node holds the process_id, execution_time, and remaining_time.
+Process Execution: The scheduler cycles through processes, and for each cycle, reduces the remaining time by a fixed amount (per cycle).
+Dynamic Updates: After each cycle, the system displays the current process status, including which process is running and how much time is remaining for each.
+Challenges Faced:
+Circular Linked List: Implementing the circular behavior of the linked list was key to simulating a round-robin scheduling algorithm.
+Process Removal: Removing processes from the circular linked list once their remaining time is zero required careful handling of pointers to avoid memory leaks or invalid access.
+Cycle Timing: Managing process cycles and ensuring the process is correctly displayed after each cycle was crucial to making the scheduling algorithm realistic.
+GitHub Link:
+Prime Number Calculation and Process Scheduling Algorithms
+(Note: Replace this with your actual GitHub repository link.)
+
+Usage:
+Prime Number Calculation:
+
+Input: No user input is required to generate the random number. The system automatically generates a 1024-bit number and stores it in a linked list.
+Output: The program prints whether the generated number is prime or not based on the Fermat Primality Test.
+Process Scheduling Algorithm:
+
+Input: The program allows the user to define initial processes with process_id, execution_time, and a fixed amount of CPU time per cycle.
+Output: The program prints the current process and its remaining time after each cycle. Processes are removed from the list once they complete their execution.
+Assumptions:
+Prime Number Program:
+
+The number is split into multiple 64-bit chunks and stored across the linked list.
+The program uses a Fermat Primality Test (probabilistic) to check if the number is prime.
+Process Scheduling Program:
+
+The CPU time per cycle is fixed and is applied uniformly across all processes in the scheduling list.
+The processes are removed once their remaining time reaches zero.
+The system displays the state of the process list after each scheduling cycle.
+Challenges Faced:
+Prime Number Calculation:
+
+Managing large numbers without big integer libraries.
+Implementing the Fermat primality test efficiently across chunks of a number.
+Process Scheduling:
+
+Circular linked list management and proper memory handling.
+Correctly updating and removing processes once they complete their execution.
+This combined project demonstrates two distinct but fundamental concepts in computer science: managing large data (through linked lists and large number handling) and implementing a round-robin scheduling algorithm for CPU processes.
